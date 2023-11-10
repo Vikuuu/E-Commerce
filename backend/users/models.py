@@ -5,7 +5,7 @@ User = get_user_model()
 
 
 class UserProfile(models.Model): 
-    user = models.OneToOneRel(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=255, null=True)
     last_name = models.CharField(max_length=255, null=True)
     
@@ -33,7 +33,7 @@ class PaymentMethod(models.Model):
     ]
     
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-    payment_method = models.CharField(max_length=1, choices=PAYMENT_CHOICES)
+    payment_method = models.CharField(max_length=3, choices=PAYMENT_CHOICES)
     
     def __str__(self):
         return self.payment_method
